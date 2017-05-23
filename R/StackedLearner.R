@@ -547,7 +547,7 @@ compressBaseLearners = function(learner, task, parset = list()) {
   if (type == "regr") {
     new.task = makeRegrTask(data = pseudo.data, target = "target")
     if (is.null(learner$super.learner)) {
-      m = makeLearner("regr.nnet", predict.type = "response")
+      m = makeLearner("regr.nnet", predict.type = )  # nolint
     } else {
       m = learner$super.learner
     }
@@ -669,7 +669,7 @@ getPseudoData = function(.data, k = 3, prob = 0.1, s = NULL, ...) {
       dist.mat.2 = hamming(mat[, ind2, drop = FALSE])
     }
     dist.mat = dist.mat.1 + dist.mat.2
-    neighbour = max.col( -dist.mat - diag(Inf, n))
+    neighbour = max.col(-dist.mat - diag(Inf, n))
     return(neighbour)
   }
 
